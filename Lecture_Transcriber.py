@@ -1,6 +1,7 @@
 import whisper #an OpenAI library for transcription
 import os #for interacting with operating system (listing files, creating folders, joining paths etc)
 import subprocess #for running external command-line programs, like ffmpeg
+import time # if want to know how it takes for the code to complete the task
 
 folder_path = "Da_FOLDER"
 
@@ -42,6 +43,16 @@ try:
 except Exception as e:
     print(f"Error loading whisper model: {e}")
     exit()
+
+"""
+Set up the timer
+
+Record the current time just before we start listing files and processing.
+time.perf_counter() gives us a precise time reference.
+"""
+start_time = time.perf_counter()
+print("Starting file processing...")
+print("-" * 30) # Add a separator to mark the start of processing output
 
 #Processing about to begin!!!
 
@@ -187,6 +198,17 @@ except Exception as e:
     # Catch any other unexpected errors that might occur during the listing phase.
     print(f"An unexpected error occurred while listing files: {e}")
 
+"""
+Stop the timer and report the elapsed time 
+"""
+end_time = time.perf_counter()
+elapsed_time = end_time - start_time # Calculate the difference
+hours = int(elapsed_time // 3600)
+remaining_seconds_after_hours = elapsed_time % 3600
+minutes = int(remaining_seconds_after_hours // 60)
+seconds = remaining_seconds_after_hours % 60
 
 # --- Final Message ---
 print("\nProcessing complete.")
+print(f"Total time taken: {hours:02d}:{minutes:02d}:{seconds:.2f}")
+
