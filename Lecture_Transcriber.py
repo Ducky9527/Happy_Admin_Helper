@@ -64,7 +64,7 @@ try:
     all_items_in_folder = os.listdir(folder_path)
     print(f"Found {len(all_items_in_folder)} items.")
 
-    #only MP$
+    #only MP4
     mp4_files = [item for item in all_items_in_folder if item.lower().endswith('.mp4') and os.path.isfile(os.path.join(folder_path, item))]
 
     if not mp4_files:
