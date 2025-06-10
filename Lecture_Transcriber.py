@@ -6,7 +6,7 @@ import time # if want to know how it takes for the code to complete the task
 folder_path = "Da_FOLDER"
 
 """Processed"""
-output_folder_name = "HSIL_Processed"
+output_folder_name = "Da_Processed"
 output_folder_path = os.path.join(folder_path, output_folder_name) #create the path for the folder containing processed file
 
 
